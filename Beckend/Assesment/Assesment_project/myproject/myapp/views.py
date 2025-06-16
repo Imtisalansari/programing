@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,request
 from django.contrib import messages
 from django.contrib.auth import get_user_model
 
@@ -63,16 +63,67 @@ def register(request):
 
 
 def fpassword(request):
-    return render(request,'fpassword.html')
+    if request.method == "POST":
+        try:
+            user = User.objects.get(mobile=request.POST['mobile'])
+            mobile =  request.POST['mobile']
+            otp = random.randint(1001,9999) 
+            url = "https://www.fast2sms.com/dev/bulkV2"
 
+            querystring = {"authorization":"4FLqt2yEconSrjiDwMvY19AXNB308IKZpWTkehHuxf7bVdG5aOjkV09BWEUrcpAST5JOZQs2dFoYxe8D","variables_values":str(otp),"route":"otp","numbers":str(mobile)}
+
+            headers = {
+                'cache-control': "no-cache"
+            }
+
+            response = requests.request("GET", url, headers=headers, params=querystring)
+
+            print(response.text)
+
+            request.session['mobile']=user.mobile
+            request.session['otp']=otp
+
+            return render(request,'otp.html')
+
+        except Exception as e:
+                msg = "Mobile not found!!"
+                print('*',e) 
+                return render(request,'fpass.html',{'msg':msg})
+
+
+    else:
+        return render(request,'fpass.html')
 def logout(request):
-    return render(request,'logout.html')
+    del request.session['email']
 
+    return redirect('login')
 
 
 def login(request):
-    return render(request,'login.html')
+    if request.method=="POST":
 
+
+        try:
+            user = User.objects.get(email=request.POST['email'])
+
+            if user.password == request.POST['password']:
+                request.session['email']=user.email
+                request.session['uprofile']=user.uprofile.url
+                if user.usertype=="buyer":
+                    return redirect('index')
+                else:
+                    return redirect('sindex')
+
+                    
+            else:
+                msg = "Invalid Password!!!"
+                return render(request,'login.html',{'msg':msg})
+
+        except:
+            msg = "Invalid Email!!!"
+            return render(request,'login.html',{'msg':msg})
+    else:
+        return render(request,'login.html')
 
 
 

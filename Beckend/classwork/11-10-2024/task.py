@@ -61,7 +61,17 @@ else:
     print("NUMBER IS NOT PRIME!!!!!!!!")
 
 """
+n = int(input("Enter number :"))
+prime=1
 
+for i in range(1,6):
+    if(n%i==0):
+        prime+=1
+
+if (prime==2):
+    print("NUMBER IS PRIME!!!!!!!!!!!!")
+else:
+    print("NUMBER IS NOT PRIME!!!!!!!!")
 
 
     
