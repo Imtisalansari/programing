@@ -1,26 +1,26 @@
-from django.shortcuts import render
-from rest_framework.response import Response
 from rest_framework.decorators import api_view
-import requests
-from rest_framework import generics
-from .models import Doctor
-from .serializers import DoctorSerializer 
+from rest_framework.response import Response
+from rest_framework import status
+from comments.serializers.json_serializer import CommentSerializer
+from comments.modules import comment_logic
 
 @api_view(['GET'])
-def get_random_joke(request):
-    url = "https://official-joke-api.appspot.com/jokes/random"
-    response = requests.get(url)
-    
-    if response.status_code == 200:
-        joke_data = response.json()
-        return Response({"setup": joke_data["setup"], "punchline": joke_data["punchline"]})
-    else:
-        return Response({"error": "Failed to fetch joke"}, status=response.status_code)
+def get_comments(request):
+    comments = comment_logic.get_all_comments()
+    serializer = CommentSerializer(comments, many=True)
+    return Response(serializer.data)
 
-class DoctorListCreateView(generics.ListCreateAPIView):
-    queryset = Doctor.objects.all()
-    serializer_class = DoctorSerializer
+@api_view(['POST'])
+def add_comment(request):
+    serializer = CommentSerializer(data=request.data)
+    if serializer.is_valid():
+        comment_logic.create_comment(serializer.validated_data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-class DoctorRetrieveUpdateDeleteView(generics.RetrieveUpdateDestroyAPIView):  # ✅ Fixed typo
-    queryset = Doctor.objects.all()
-    serializer_class = DoctorSerializer
+@api_view(['DELETE'])
+def delete_comment(request, pk):
+    success = comment_logic.delete_comment(pk)
+    if success:
+        return Response({'message': 'Deleted successfully'}, status=status.HTTP_204_NO_CONTENT)
+    return Response({'error': 'Comment not found'}, status=status.HTTP_404_NOT_FOUND)
