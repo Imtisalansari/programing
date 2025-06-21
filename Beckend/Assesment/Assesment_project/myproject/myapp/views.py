@@ -1,6 +1,13 @@
-from django.shortcuts import render,redirect,request
 from django.contrib import messages
 from django.contrib.auth import get_user_model
+
+from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
+from .models import PolicyHolder
+from .utils import send_confirmation_email
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+
 
 # Create your views here.
 
@@ -127,3 +134,22 @@ def login(request):
 
 
 
+
+
+def admin_dashboard(request):
+    if not request.user.is_staff:
+        return redirect('login')
+    holders = PolicyHolder.objects.all()
+    return render(request, 'dashboard.html', {'holders': holders})
+
+def approve_user(request, user_id):
+    holder = PolicyHolder.objects.get(id=user_id)
+    holder.status = 'Approved'
+    holder.save()
+    return redirect('dashboard')
+
+def reject_user(request, user_id):
+    holder = PolicyHolder.objects.get(id=user_id)
+    holder.status = 'Rejected'
+    holder.save()
+    return redirect('dashboard')
