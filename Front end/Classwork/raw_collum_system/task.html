@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .image-container {
+      position: relative;
+      width: 300px;
+    }
+
+    .image-container img {
+      width: 100%;
+      display: block;
+      transition: opacity 1s ease;
+    }
+
+    .image-container img.hover-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+    }
+
+    .image-container:hover .hover-img {
+      opacity: 1;
+    }
+
+    .image-container:hover .main-img {
+      opacity: 0;
+    }
+
+
+
+
+
+    .image-container1 {
+      position: relative;
+      width: 300px;
+    }
+
+    .image-container1 img {
+      width: 100%;
+      display: block;
+      transition: opacity 1s ease;
+    }
+
+    .image-container1 img.hover-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+    }
+
+    .image-container1:hover .hover-img {
+      opacity: 1;
+    }
+
+    .image-container1:hover .main-img {
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+
+<div class="image-container">
+  <img src="https://images.pexels.com/photos/863963/pexels-photo-863963.jpeg?cs=srgb&dl=pexels-blaque-x-863963.jpg&fm=jpg" alt="Normal" class="main-img">
+  <img src="https://images.pexels.com/photos/531880/pexels-photo-531880.jpeg?cs=srgb&dl=pexels-pixabay-531880.jpg&fm=jpg" alt="On Hover" class="hover-img">
+</div>
+<div class="image-container">
+  <img src="https://cdn.bloomsflora.com/uploads/product/bloomsflora/13172_33_13172.webp" alt="Normal" class="main-img">
+  <img src="https://cdn.bloomsflora.com/uploads/product/bloomsflora/12823_89_12823.webp" alt="On Hover" class="hover-img">
+</div>
+</body>
+</html>
