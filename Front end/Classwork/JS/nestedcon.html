@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <input type="number" placeholder="Enter Number" id="n1">
+    <input type="number" placeholder="Enter Number" id="n2">
+    <input type="number" placeholder="Enter Number" id="n3">
+
+    <button onclick="greatest()">Click for Find Grestest Number</button>
+    <script>
+        function greatest()
+        {
+            let n1 = document.getElementById("n1").value
+            let n2 = document.getElementById("n2").value
+            let n3 = document.getElementById("n3").value
+
+            if(n1>n2)
+            {
+                if(n1>n3)
+                {
+                    document.write("n1 is Greatest")
+
+                }
+                else{
+                    document.write("n3 is Greatest")
+                }
+            }
+            else
+            {
+                if(n2>n3)
+                {
+                    document.write("n2 is greatest")
+
+                    
+                }
+                else{
+                    document.write("n3 is greatest")
+                }
+            }
+        }
+
+
+    </script>
+</body>
+</html>

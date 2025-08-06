@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" placeholder="Enter First Mark" id="n1">
+    <input type="number" placeholder="Enter Second Mark" id="n2">
+    <input type="number" placeholder="Enter ThirdMark" id="n3">
+    <input type="number" placeholder="Enter Fourth Mark" id="n4">
+    <input type="number" placeholder="Enter Fifth Mark" id="n5">
+    <input type="number" placeholder="Enter Sixeth Mark" id="n6">
+
+    <button onclick="Score()">Click here</button>
+    <script>
+        function Score()
+        {
+            let n1 = Number(document.getElementById("n1").value)
+            let n2 = Number(document.getElementById("n2").value)
+            let n3 = Number(document.getElementById("n3").value)
+            let n4 = Number(document.getElementById("n4").value)
+            let n5 = Number(document.getElementById("n5").value)
+            let n6 = Number(document.getElementById("n6").value)
+            let total = n1 + n2 +n3 + n4 + n5 +n6
+            let average = total/6 
+            document.write("Total is",total)
+        
+            document.write("Average is",average)
+            
+
+            if(average>70)
+            {
+                document.write("First class")
+            }
+            else if(average>60)
+            {
+                document.write("Second Class")
+
+            }
+            else if(average>45)
+            {
+            document.write("Third Class")
+            }
+            else if(average<33)
+            {
+                document.write("You are Fail!!!!")
+            }
+            else{
+                pass
+            }
+            
+
+
+        }
+
+    </script>
+</body>
+</html>
