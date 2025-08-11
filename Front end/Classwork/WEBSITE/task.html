@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nirvana Retreats</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      background-color: #fff;
+      color: #333;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background: #111;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header div {
+      font-size: 1.5rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #4CAF50;
+    }
+
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+        url('https://images.unsplash.com/photo-1504196606672-aef5c9cefc92') center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 120px 20px;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+    }
+
+    .section {
+      padding: 50px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .section h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2rem;
+      color: #222;
+    }
+
+    .card-container {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .card {
+      flex: 1 1 280px;
+      background: white;
+      border-radius: 10px;
+      padding: 25px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      color: #4CAF50;
+    }
+
+    .testimonial {
+      background: #f0f8f4;
+      padding: 25px;
+      margin: 20px 0;
+      border-left: 5px solid #4CAF50;
+      font-style: italic;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    footer {
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 25px 15px;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.3rem;
+      }
+
+      nav {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav a {
+        margin: 10px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div>Nirvana</div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">Retreats</a>
+      <a href="#">Blog</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Welcome to Nirvana</h1>
+    <p>A sanctuary to reset your mind, body and soul.</p>
+  </section>
+
+  <section class="section">
+    <h2>Upcoming Retreats</h2>
+    <div class="card-container">
+      <div class="card">
+        <h3>Yoga & Fitness</h3>
+        <p><em>March 2025</em></p>
+        <p>Balance your mind and body through the art of Yoga.</p>
+      </div>
+      <div class="card">
+        <h3>Herbal Medicine</h3>
+        <p><em>April 2025</em></p>
+        <p>Heal naturally with a blend of ancient herbal practices.</p>
+      </div>
+      <div class="card">
+        <h3>Surfing Trip</h3>
+        <p><em>May 2025</em></p>
+        <p>Refresh your spirit with guided surfing experiences.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Wellness & Spa</h2>
+    <p style="text-align:center;">Relax in our luxurious spa facilities and feel the stress melt away.</p>
+  </section>
+
+  <section class="section">
+    <h2>Rest & Nature</h2>
+    <p style="text-align:center;">Rejuvenate with nature walks, mountain climbs, and tranquil surroundings.</p>
+  </section>
+
+  <section class="section">
+    <h2>Organic Cuisine</h2>
+    <p style="text-align:center;">Enjoy healthy organic meals that nourish your body and soul.</p>
+  </section>
+
+  <section class="section">
+    <h2>Testimonials</h2>
+    <div class="testimonial">
+      <p>"Change is not something to fear. Without change, nothing grows."</p>
+      <strong>- John Doe</strong>
+    </div>
+    <div class="testimonial">
+      <p>"Spend a week in the woods. Wash your spirit clean."</p>
+      <strong>- Jack Foster</strong>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Nirvana Retreats | (212) 123-4567 | nirvana@abc.com</p>
+  </footer>
+
+</body>
+</html>
